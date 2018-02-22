@@ -69,7 +69,7 @@
 				"creationTimestamp": null
 			},
 			"spec": {
-				"path": "/account-1.0-SNAPSHOT",
+				"path": "/account",
 				"to": {
 					"kind": "Service",
 					"name": "frontend"
