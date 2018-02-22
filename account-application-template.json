@@ -382,6 +382,18 @@
 										"value": "${MYSQL_DATABASE}"
 									}
 								],
+								"readinessProbe": {
+									"timeoutSeconds": 1,
+									"initialDelaySeconds": 5,
+									"exec": {
+										"command": [
+											"/bin/sh",
+											"-i",
+											"-c",
+											"MYSQL_PWD=\"$MYSQL_PASSWORD\" mysql -h 127.0.0.1 -u $MYSQL_USER -D $MYSQL_DATABASE -e 'SELECT 1'"
+										]
+									}
+								},
 								"resources": {
 									
 								},
@@ -443,11 +455,6 @@
 			"name": "GIT_REPO",
 			"description": "Git Repository with application source code",
 			"value": "https://github.com/avatar42/registration-login-spring-xml-maven-jsp-mysql.git"
-		},
-		{
-			"name": "PUBLIC_URL",
-			"description": "Public URL to map the application",
-			"value": "movieplex.openshift.beesshop.org"
 		}
 	],
 	"labels": {
