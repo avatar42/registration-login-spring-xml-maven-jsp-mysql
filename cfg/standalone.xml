@@ -135,7 +135,6 @@
                 <keepalive-time time="30" unit="seconds"/>
             </thread-pool>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:2.0">
             <datasources>
                 <datasource jndi-name="java:jboss/datasources/accounts" enabled="${mysql.enabled}" use-java-context="true" pool-name="accounts" use-ccm="true">
