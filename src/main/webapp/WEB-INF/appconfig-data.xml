@@ -10,25 +10,14 @@
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-	<!-- Configure the data source bean from props file for local testing <bean 
-		id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
-		<property name="driverClassName" value="${jdbc.driverClassName}"/> <property 
-		name="url" value="${jdbc.url}"/> <property name="username" value="${jdbc.username}"/> 
-		<property name="password" value="${jdbc.password}"/> </bean> -->
 	<!-- Configure the data source bean from generated info -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://${env.OPENSHIFT_MYSQL_DB_HOST}:${env.OPENSHIFT_MYSQL_DB_PORT}/${env.OPENSHIFT_MYSQL_DATABASE}" />
-		<property name="username" value="${env.OPENSHIFT_MYSQL_USER}" />
-		<property name="password" value="${env.OPENSHIFT_MYSQL_PASSWORD}" />
+	<bean id="jndiDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:jboss/datasources/accounts" />
 	</bean>
-
 	<!-- Configure the entity manager factory bean -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="jndiDataSource" />
 		<property name="packagesToScan" value="com.hellokoding.account.model" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
