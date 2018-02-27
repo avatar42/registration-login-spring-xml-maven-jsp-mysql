@@ -1,5 +1,3 @@
-USE `accounts`;
-
 --
 -- Dumping data for table `role`
 --
