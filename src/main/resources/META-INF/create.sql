@@ -12,14 +12,6 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `role`
---
-
-LOCK TABLES `role` WRITE;
-INSERT INTO `role` VALUES (1,'ROLE_USER');
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 

@@ -1,4 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `accounts`;
 USE `accounts`;
 DROP TABLE IF EXISTS `role`;
 DROP TABLE IF EXISTS `user`;
