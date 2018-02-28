@@ -3,7 +3,8 @@
     <persistence-unit name="movieplex7PU" transaction-type="JTA">
         <jta-data-source>java:jboss/datasources/accounts</jta-data-source>
         <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+        <!-- create DB if missing otherwise leave alone -->
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
             <property name="javax.persistence.schema-generation.create-source" value="script"/>
             <property name="javax.persistence.schema-generation.drop-source" value="script"/>
             <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/create.sql"/>

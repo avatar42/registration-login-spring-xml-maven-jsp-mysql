@@ -3,10 +3,11 @@
 --
 
 LOCK TABLES `role` WRITE;
-INSERT INTO `role`  SELECT * FROM (SELECT 1,'ROLE_USER') AS tmp WHERE NOT EXISTS ( SELECT id from role where id=1) LIMIT 1;
+INSERT INTO `role` ( 1,'ROLE_USER') ;
+UNLOCK TABLES;
 
-INSERT INTO `user`  (`username`, `password`) SELECT * FROM (SELECT 'JimSmith','$2a$11$oH1vjQKYfPS2ddQWisiYj.z3qntBwLh6Ur2Ewy8brZbreEsx.gzXm') AS tmp  WHERE NOT EXISTS ( SELECT username from user where username='JimSmith') LIMIT 1;
-INSERT INTO `user`  (`username`, `password`) SELECT * FROM (SELECT 'Bobmith','$2a$11$oH1vjQKYfPS2ddQWisiYj.z3qntBwLh6Ur2Ewy8brZbreEsx.gzXm') AS tmp  WHERE NOT EXISTS ( SELECT username from user where username='BobSmith') LIMIT 1;
-
+LOCK TABLES `user` WRITE;
+INSERT INTO `user`  (`username`, `password`) VALUES ( 'JimSmith','$2a$11$oH1vjQKYfPS2ddQWisiYj.z3qntBwLh6Ur2Ewy8brZbreEsx.gzXm');
+INSERT INTO `user`  (`username`, `password`) VALUES ('Bobmith','$2a$11$oH1vjQKYfPS2ddQWisiYj.z3qntBwLh6Ur2Ewy8brZbreEsx.gzXm');
 UNLOCK TABLES;
 
